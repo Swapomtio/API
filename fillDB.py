@@ -101,7 +101,7 @@ print("Database connected successfully...\n")
 
 run = 0
 while run == 0:
-	PLC_Points()
-	PLC_Points_SQL()
+	test_PLC_Points()
+	#PLC_Points_SQL()
 	sleep(0.5)
 	run = run + 1
