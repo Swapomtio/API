@@ -24,8 +24,8 @@ conn.close()
 
 #
 conn = psycopg2.connect(
-	database="",
-	user="icstest",
+	database="icstest",
+	user="postgres",
 	password="ubuntu",
 	host="localhost",
 	port="5432"
