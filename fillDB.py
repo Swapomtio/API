@@ -36,7 +36,7 @@ for y in plc_ip:
 branch01; branch02
 
 #points of interest
-def PLC_Points():
+def test_PLC_Points():
 	global branch01, branch02
 	try:
 		branch01 = subA.read_coils(20,1)
@@ -46,6 +46,22 @@ def PLC_Points():
 	except:
 		print("Branch Data Error!")
 
+def PLC_Points():
+	global r1, r2, r3, r4, r5, r6, r7, t1, t2
+	try:
+		r1 = subA.read_coils(4,32) #VS101
+		r2 = subA.read_coils(6,32) #VS102
+		#r3 = subA.read_coils(20,1) # unknown
+		r4 = subA.read_coils(16,32) # 1st num AL5111A
+		r5 = subA.read_coils(18,32) # 1st num AL5112A
+		r6 = subA.read_coils(20,32) # 1st num AL5113A
+		r7 = subA.read_coils(22,32) # 1st num AL5114A
+		#t1 = subA.read_coils(20,1) #unknown
+		#t2 = subA.read_coils(20,1) #unknown
+	except:
+		print("Data gathering Error!")
+
+		
 #bits to hex function
 def hexConvert(x):
 	#Converts bits to a hex string then returns
@@ -60,7 +76,7 @@ def hexConvert(x):
 
 #insert into database function
 def PLC_Points_SQL():
-	global branch01, branch02
+	global r1, r2, r3, r4, r5, r6, r7, t1, t2
 	
 	cur = conn.cursor()
 	Time = time.strf.time('%m%d%H%M%S')
