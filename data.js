@@ -8,14 +8,21 @@ const {Client} = require('pg')
 const  client = new Client({
 	user: 'postgres',
 	host: 'localhost',
-	database: 'plctest',
+	database: 'icstest',
 	password: 'ubuntu',
 	port: 5432,
 })
-client.connect(function(err)
+client.connect((err) =>
 {
 	if (err) throw err;
 	console.log("Connected!");
+
+	// run the to retrieve data
+	client.query("SELECT * FROM icstest.subABool", (error, results) => {
+		if(error) throw error;
+		// print everything in the table
+		console.log(results.rows);
+	})
 });
 
 //reading in the json file
